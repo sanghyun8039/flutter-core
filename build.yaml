@@ -1,0 +1,17 @@
+targets:
+  $default:
+    builders:
+      ferry_generator|graphql_builder:
+        enabled: true
+        options:
+          schema: flutter_core|lib/core/network/graphql/schema.graphql
+          queries_glob: lib/core/network/graphql/operations/**.graphql
+          output_dir: __generated__
+      freezed:
+        enabled: true
+      json_serializable:
+        enabled: true
+      ferry_generator|serializer_builder:
+        enabled: true
+        options:
+          schema: flutter_core|lib/core/network/graphql/schema.graphql
