@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_core/core/localization/localization_config.dart';
 import 'package:flutter_core/core/services/injection_container.dart';
 import 'package:flutter_core/src/features/auth/presentation/blocs/auth_bloc.dart';
 import 'package:flutter_core/src/features/auth/presentation/blocs/user_bloc.dart';
@@ -22,6 +23,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      localizationsDelegates: LocalizationConfig.localizationsDelegates,
+      supportedLocales: LocalizationConfig.supportedLocales,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,

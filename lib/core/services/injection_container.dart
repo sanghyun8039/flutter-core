@@ -13,6 +13,7 @@ import 'package:flutter_core/core/auth/repositories/token_repository_rest_impl.d
 import 'package:flutter_core/core/network/graphql/graphql_client.dart';
 import 'package:flutter_core/core/network/graphql/graphql_config.dart';
 import 'package:flutter_core/core/network/graphql/graphql_link.dart';
+import 'package:flutter_core/core/storage/shared_preferences_service.dart';
 import 'package:flutter_core/src/features/auth/data/api/auth_api_client.dart';
 import 'package:flutter_core/src/features/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:flutter_core/src/features/auth/data/datasources/auth_remote_data_source_impl.dart';
@@ -48,7 +49,10 @@ class ServiceLocator {
 
   static Future<void> _initExternalServices() async {
     const secureStorage = FlutterSecureStorage();
+    final sharedPreferences = SharedPreferencesService();
+    await sharedPreferences.init();
     sl.registerLazySingleton(() => secureStorage);
+    sl.registerLazySingleton(() => sharedPreferences);
   }
 
   static Future<void> _initTokenRepositories() async {
